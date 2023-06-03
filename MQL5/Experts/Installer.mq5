@@ -10,6 +10,18 @@
 #property description "Installer IA Power by https://bitcoinnano.org"
 
 #include <ejtrader/http.mqh>
+
+#import "user32.dll"
+int PostMessageA(int hWnd, int msg, int wparam, int lparam);
+int GetParent(int hWnd);
+#import
+
+#import "shell32.dll"
+int ShellExecuteW(int hwnd, string lpOperation, string lpFile, string lpParameters,
+                  string lpDirectory, int nShowCmd);
+#import
+#define WM_CLOSE 16
+
 string Library = "";
 string Expert = "";
 
@@ -66,6 +78,18 @@ void GetDependencies()
     {
         Expert = Experties[l];
         GetExperties();
+    }
+    long chid = ChartFirst();
+    long pom;
+    //---
+    // ChartAc
+    for (int ii = 0; ii < 20; ii++)
+    {
+        pom = ChartNext(chid);
+        ChartClose(chid);
+        if (pom == -1)
+            break;
+        chid = pom;
     }
 }
 
