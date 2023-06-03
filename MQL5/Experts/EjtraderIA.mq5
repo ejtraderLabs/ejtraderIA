@@ -5,7 +5,7 @@
 //+------------------------------------------------------------------+
 #property copyright "Copyright 2023, EJtrader"
 #property link "https://bitcoinnano.org/"
-#define VERSION "1.0"
+#define VERSION "0.1"
 #property version VERSION
 #property description "IA Power by https://bitcoinnano.org"
 
