@@ -37,7 +37,7 @@ int OnInit()
     {
         GetDependencies();
     }
-
+    Alert("Instalation is Done");
     return (INIT_SUCCEEDED);
 }
 
