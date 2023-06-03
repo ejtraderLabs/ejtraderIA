@@ -11,13 +11,6 @@
 
 #include <ejtrader/http.mqh>
 
-#import "user32.dll"
-int PostMessageA(int hWnd, int msg, int wparam, int lparam);
-int GetParent(int hWnd);
-#import
-
-#define WM_CLOSE 16
-
 string Library = "";
 string Expert = "";
 
