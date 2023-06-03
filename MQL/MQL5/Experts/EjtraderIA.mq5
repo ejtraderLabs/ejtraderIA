@@ -42,12 +42,23 @@ int deInitReason = -1;
 Context context;
 Socket socket(context, ZMQ_SUB);
 PollItem pi[1];
+
+string Expert = "";
+
+string Experties[1] =
+    {
+        "EjtraderIA.ex5"};
+
 //+------------------------------------------------------------------+
 //| Expert initialization function                                   |
 //+------------------------------------------------------------------+
 int OnInit()
 {
 
+    if (!TERMINAL_DLLS_ALLOWED)
+    {
+        Alert("Error: Dll calls must be allowed!");
+    }
     // check if there is a update
     CheckVertionUpdate();
 
@@ -168,6 +179,9 @@ void OnTimer()
     }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void drawpred(string res)
 {
     CJAVal json;
@@ -225,30 +239,45 @@ void drawpred(string res)
 //+------------------------------------------------------------------+
 void CheckVertionUpdate()
 {
-    // cria um objeto CJAVal para armazenar a resposta da API do GitHub
+
     CJAVal incomingMessage;
 
-    // define a URL da API do GitHub e adiciona "/latest" para obter a última release
-    string url = "https://api.github.com/repos/ejtraderLabs/MetatraderOderflow/releases/latest";
-
-    // faz uma requisição GET para a API do GitHub para obter a última release
+    // define a URL da API do GitHub
+    string url = "https://api.github.com/repos/ejtraderLabs/ejtraderIA/releases/latest";
     string msg = httpGET(url);
-
-    // verifica se houve erro na requisição
     if (!incomingMessage.Deserialize(msg))
     {
         Print("Erro ao receber dados da API do GitHub.");
     }
 
-    // extrai o nome da última tag
     string tagName = incomingMessage["tag_name"].ToStr();
 
     if (VERSION != tagName)
 
     {
-        // exibe o nome da última tag no log
-        Alert("Run AutoInstaller new Version is Avalible: ", tagName);
+        int choicee = MessageBox(StringFormat("New version available. Update?: ", tagName),
+                                 "",
+                                 MB_YESNO | MB_ICONQUESTION); //  Two buttons - "Yes" and "No"
+        if (choicee == IDYES)
+        {
+            for (int l = 0; l < ArraySize(Experties); l++)
+            {
+                Expert = Experties[l];
+                GetExperties();
+            }
+        }
     }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void GetExperties()
+{
+    ResetLastError();
+    string path = TerminalInfoString(TERMINAL_PATH) + "\\MQL5\\Experts\\" + Expert;
+    string Url = "https://raw.githubusercontent.com/ejtraderLabs/ejtraderIA/main/MQL/MQL5/Experts/" + Expert;
+    GetandSave(Url, path);
 }
 
 //+------------------------------------------------------------------+
@@ -287,3 +316,4 @@ string getUninitReasonText(int reasonCode)
     //---
     return text;
 }
+//+------------------------------------------------------------------+
