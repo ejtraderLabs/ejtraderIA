@@ -11,6 +11,14 @@ int ShellExecuteA(
     string Parameters,
     string Directory,
     int ShowCmd);
+
+int ShellExecuteW(
+    int hwnd,
+    string lpOperation,
+    string lpFile,
+    string lpParameters,
+    string lpDirectory,
+    int nShowCmd);
 #import
 
 #import "wininet.dll"
@@ -106,6 +114,48 @@ string httpGET(string strUrl)
 void httpOpen(string strUrl)
 {
     ShellExecuteA(0, "open", strUrl, "", "", 3);
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void ExecutePowerShellCommand(string command)
+{
+    int result = ShellExecuteW(0, "open", "powershell.exe", command, NULL, 0);
+    if (result <= 32)
+    {
+        Print("Falha ao executar o comando: ", result);
+    }
+}
+
+void GetandInstall(string GetInstallUrl)
+{
+    string command = "-Command \"(New-Object System.Net.WebClient).DownloadFile('" + GetInstallUrl + "', 'setup.exe'); Start-Process -Wait 'setup.exe'\"";
+    int result = ShellExecuteW(0, "open", "powershell.exe", command, NULL, 0);
+    if (result <= 32)
+    {
+        Print("Falha ao executar o comando: ", result);
+    }
+}
+
+void GetandInstallSilence(string GetInstallSilenceUrl)
+{
+    string command = "-Command \"(New-Object System.Net.WebClient).DownloadFile('" + GetInstallSilenceUrl + "', 'setup.exe'); Start-Process -Wait 'setup.exe'  /quiet\"";
+    int result = ShellExecuteW(0, "open", "powershell.exe", command, NULL, 0);
+    if (result <= 32)
+    {
+        Print("Falha ao executar o comando: ", result);
+    }
+}
+
+void GetandSave(string GetUrl, string SetPath)
+{
+    string command = "-Command \"(New-Object System.Net.WebClient).DownloadFile('" + GetUrl + "', '" + SetPath + "')\"";
+    int result = ShellExecuteW(0, "open", "powershell.exe", command, NULL, 0);
+    if (result <= 32)
+    {
+        Print("Falha ao executar o comando: ", result);
+    }
 }
 
 //+------------------------------------------------------------------+
