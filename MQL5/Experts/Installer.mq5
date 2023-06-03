@@ -16,10 +16,6 @@ int PostMessageA(int hWnd, int msg, int wparam, int lparam);
 int GetParent(int hWnd);
 #import
 
-#import "shell32.dll"
-int ShellExecuteW(int hwnd, string lpOperation, string lpFile, string lpParameters,
-                  string lpDirectory, int nShowCmd);
-#import
 #define WM_CLOSE 16
 
 string Library = "";
