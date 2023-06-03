@@ -34,5 +34,4 @@
 # Macos Hiden
 *.DS_Store
 
-# Compiled Static mql4 and mql5
-*.ex4
+
