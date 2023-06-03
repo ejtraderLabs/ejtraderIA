@@ -13,7 +13,7 @@
 string Library = "";
 string Expert = "";
 
-string url = "https://raw.githubusercontent.com/ejtraderLabs/ejtraderIA/main/MQL/MQL5";
+string url = "https://raw.githubusercontent.com/ejtraderLabs/ejtraderIA/main/MQL5";
 
 string Libraries[2] =
     {

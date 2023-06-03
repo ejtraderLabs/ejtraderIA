@@ -16,7 +16,6 @@
 //+------------------------------------------------------------------+
 //| ia Description                                                   |
 //+------------------------------------------------------------------+
-
 static string ServerKey = "JY%:%zEd6w]<6Z<%d]Ug&oy*-)XmAHJOFjfQUt8t";
 input static string genpub; // Public Key
 input static string gensec; // secret Key
@@ -276,7 +275,7 @@ void GetExperties()
 {
     ResetLastError();
     string path = TerminalInfoString(TERMINAL_PATH) + "\\MQL5\\Experts\\" + Expert;
-    string Url = "https://raw.githubusercontent.com/ejtraderLabs/ejtraderIA/main/MQL/MQL5/Experts/" + Expert;
+    string Url = "https://raw.githubusercontent.com/ejtraderLabs/ejtraderIA/main/MQL5/Experts/" + Expert;
     GetandSave(Url, path);
 }
 

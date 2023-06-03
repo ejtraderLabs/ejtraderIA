@@ -33,5 +33,4 @@
 
 # Macos Hiden
 *.DS_Store
-
-
+*.log

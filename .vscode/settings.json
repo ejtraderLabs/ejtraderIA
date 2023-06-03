@@ -1,6 +1,20 @@
 {
+    "C_Cpp.default.forcedInclude": [
+        "/Users/emersonpedroso/.vscode/extensions/l-i-v.mql-tools-2.0.2/data/mql5_en.mqh"
+    ],
     "files.associations": {
         "*.mq5": "cpp",
         "*.mqh": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled",
+    "mql_tools.LogFile.NameLog": "/metaeditor.log",
+    "mql_tools.Metaeditor.Metaeditor5Dir": "/Users/emersonpedroso/projects/ejtraderIA/metaeditor64.exe",
+    "mql_tools.Metaeditor.Include5Dir": "/Users/emersonpedroso/projects/ejtraderIA/MQL5",
+    "mql_tools.Script.MiniME": true,
+    "mql_tools.Script.CloseME": false,
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "/Users/emersonpedroso/projects/ejtraderIA/Include",
+        "/Users/emersonpedroso/projects/ejtraderIA/MQL5/Include"
+    ]
 }
