@@ -5,7 +5,7 @@
 //+------------------------------------------------------------------+
 #property copyright "Copyright 2023, EJtrader"
 #property link "https://bitcoinnano.org/"
-#define VERSION "0.1"
+#define VERSION "0.2"
 #property version VERSION
 #property description "IA Power by https://bitcoinnano.org"
 
@@ -264,6 +264,20 @@ void CheckVertionUpdate()
                 Expert = Experties[l];
                 GetExperties();
             }
+        }
+
+        Alert("Restart Metatrader for the changes to take effect");
+        long chid = ChartFirst();
+        long pom;
+        //---
+        // ChartAc
+        for (int ii = 0; ii < 20; ii++)
+        {
+            pom = ChartNext(chid);
+            ChartClose(chid);
+            if (pom == -1)
+                break;
+            chid = pom;
         }
     }
 }
