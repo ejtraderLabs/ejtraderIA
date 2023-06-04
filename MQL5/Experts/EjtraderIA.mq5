@@ -288,7 +288,7 @@ void CheckVertionUpdate()
 void GetExperties()
 {
     ResetLastError();
-    string path = TerminalInfoString(TERMINAL_PATH) + "\\MQL5\\Experts\\" + Expert;
+    string path = TerminalInfoString(TERMINAL_DATA_PATH) + "\\MQL5\\Experts\\" + Expert;
     string Url = "https://raw.githubusercontent.com/ejtraderLabs/ejtraderIA/main/MQL5/Experts/" + Expert;
     GetandSave(Url, path);
 }

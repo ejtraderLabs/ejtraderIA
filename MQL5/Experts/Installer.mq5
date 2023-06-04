@@ -94,7 +94,7 @@ void GetLibraries()
 {
     //---
     ResetLastError();
-    string path = TerminalInfoString(TERMINAL_PATH) + "\\MQL5\\Libraries\\" + Library;
+    string path = TerminalInfoString(TERMINAL_DATA_PATH) + "\\MQL5\\Libraries\\" + Library;
     string Url = url + "/Libraries/" + Library;
     GetandSave(Url, path);
 }
@@ -105,7 +105,7 @@ void GetLibraries()
 void GetExperties()
 {
     ResetLastError();
-    string path = TerminalInfoString(TERMINAL_PATH) + "\\MQL5\\Experts\\" + Expert;
+    string path = TerminalInfoString(TERMINAL_DATA_PATH) + "\\MQL5\\Experts\\" + Expert;
     string Url = url + "/Experts/" + Expert;
     GetandSave(Url, path);
 }
